@@ -7,19 +7,20 @@
 }
 
 body{
-  width: 100%;
   height: 100vh;
   overflow: hidden;
+
   /* background: linear-gradient(135deg, #933893, #22242b); */
 
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(ellipse at 80% 5%, #4c00ff 0%, rgb(255 40 184 / 0%) 30%), radial-gradient(ellipse at bottom left, #ff006a 0%, rgb(98 190 255 / 31%) 60%), linear-gradient(135deg, rgba(18, 46, 119, 0) 0%, rgba(18, 46, 119, 0) 75%, #395eff 100%), linear-gradient(82deg, #dff7ff 0%, #74b5ff 27%, #88b8ff 74%, #82b3ff 100%);
-background-blend-mode: screen, hue, color, overlay;
+  background-blend-mode: screen, hue, color, overlay;
+
+  background-repeat: no-repeat;
 
 }
 
 .App {
-  width: 550px;
-  margin: 40px auto;
+  margin: 5vh 25vw;
   padding: 30px;
   background: rgba(255, 255, 255, 0.463);
   backdrop-filter: blur(10px);
@@ -37,6 +38,7 @@ background-blend-mode: screen, hue, color, overlay;
 .todo-input-wrapper {
   margin-top: 40px;
   display: flex;
+  justify-content: center;
   height: 10vh;
 }
 
@@ -136,4 +138,25 @@ background-blend-mode: screen, hue, color, overlay;
 .delete:hover{
   transition: 0.3s ease-in-out;
   transform: scale(1.03);
+}
+
+@media (max-width: 750px){
+
+  .App{
+    margin: 10%;
+    display: flex;
+    margin: 5vh 10% 10%;
+  }
+
+  .todo-input-wrapper{
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .todo-input-bar{
+    width: 100%;
+    flex: 1;
+    margin-bottom: 0.7rem;
+  }
 }
