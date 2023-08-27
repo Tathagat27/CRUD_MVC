@@ -72,7 +72,7 @@ function App() {
       
       <div className="todos-list">
         {!todos || !todos.length ? (
-          <h3 style={{ textAlign: "center" }}>No Todo Data </h3>
+          <h2 style={{ textAlign: "center", color: "whitesmoke", textShadow: "0 0 3px #FF0000" }}>No Todo Data </h2>
         ) : (
           todos.map((todo) => (
             <div className="todo" key={todo._id}>
