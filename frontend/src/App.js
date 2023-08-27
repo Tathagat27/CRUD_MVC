@@ -62,7 +62,7 @@ function App() {
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
           placeholder="Add a New Todo"
-          autofocus="autofocus"
+          autoFocus
         />
         <button type="submit" className="add-button" onClick ={handleAddTodo} >
           +
