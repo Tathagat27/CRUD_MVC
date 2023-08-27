@@ -1,13 +1,14 @@
 import "./App.modules.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import deleteIcon from "./assets/delete.svg";
+import { Trash2 } from "lucide-react";
 
 const BASE_URL = "http://localhost:5000/api";
 
 function App() {
   const [todos, setTodos] = useState(null);
   const [todo, setTodo] = useState("");
+  
 
   useEffect(() => {
     getTodos();
@@ -20,7 +21,8 @@ function App() {
       .catch((err) => console.error(err));
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e) => {
+    e.preventDefault();
     axios
       .post(`${BASE_URL}/todo/new`, {
         title: todo,
@@ -52,20 +54,24 @@ function App() {
 
   return (
     <div className="App">
+      
+      <form onSubmit={handleAddTodo}>
       <div className="todo-input-wrapper">
         <input
           className="todo-input-bar"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
-          placeholder="ADD a New Todo"
+          placeholder="Add a New Todo"
         />
-        <div className="add-button" onClick={handleAddTodo}>
+        <button type="submit" className="add-button" >
           +
+        </button>
         </div>
-      </div>
+      </form>        
+      
       <div className="todos-list">
         {!todos || !todos.length ? (
-          <h3 style={{ textAlign: "center" }}>No Todo Data !!!</h3>
+          <h3 style={{ textAlign: "center" }}>No Todo Data </h3>
         ) : (
           todos.map((todo) => (
             <div className="todo" key={todo._id}>
@@ -80,7 +86,7 @@ function App() {
                 className="delete"
                 onClick={() => handleDeleteTodo(todo._id)}
               >
-                <img src={deleteIcon} alt="delete" height="20px" width="20px" />
+                <Trash2 color="#dd2727" strokeWidth={1.75} />
               </div>
             </div>
           ))
