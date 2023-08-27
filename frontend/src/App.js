@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [todos, setTodos] = useState(null);
@@ -42,7 +42,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setError('An error occurred. Please try again.',err); 
+        setError('An error occurred. Please try again.'); 
       });
   };
 
