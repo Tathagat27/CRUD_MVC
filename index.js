@@ -8,7 +8,12 @@ const connectdb = require("./mongodb");
 
 const todoRoute = require("./routes/todoRoute");
 
+const app = express();
+
 const PORT = process.env.PORT || 5000;
+
+app.use(express.json());
+app.use(cors());
 
 // Your code
 if (process.env.NODE_ENV === "production") {
@@ -24,10 +29,6 @@ if (process.env.NODE_ENV === "production") {
 }
 // Your code
 
-
-const app = express();
-app.use(express.json());
-app.use(cors());
 
 connectdb();
 

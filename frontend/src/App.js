@@ -8,6 +8,7 @@ const BASE_URL = "http://localhost:5000/api";
 function App() {
   const [todos, setTodos] = useState(null);
   const [todo, setTodo] = useState("");
+  const [error, setError] = useState('');
   
 
   useEffect(() => {
@@ -23,15 +24,26 @@ function App() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
+
+    if (!todo.trim()) {
+      // Show an error message to the user or handle it in your preferred way
+      setError('Title cannot be empty');
+      return;
+    }
+
     axios
-      .post(`${BASE_URL}/todo/new`, {
+      .post(`${BASE_URL}/todo/new`,{
         title: todo,
       })
       .then((res) => {
         setTodos([...todos, res.data]);
         setTodo("");
+        setError('');
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.log(err);
+        setError('An error occurred. Please try again.'); 
+      });
   };
 
   const handleDeleteTodo = (id) => {
@@ -54,17 +66,18 @@ function App() {
 
   return (
     <div className="App">
-      
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleAddTodo}>
       <div className="todo-input-wrapper">
         <input
           className="todo-input-bar"
+          name="title"
           value={todo}
           onChange={(e) => setTodo(e.target.value)}
           placeholder="Add a New Todo"
           autoFocus
         />
-        <button type="submit" className="add-button" onClick ={handleAddTodo} >
+        <button type="submit" className="add-button" >
           +
         </button>
         </div>
