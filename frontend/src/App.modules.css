@@ -146,6 +146,7 @@ body{
     margin: 10%;
     display: flex;
     margin: 5vh 10% 10%;
+    height: 80vh;
   }
 
   .todo-input-wrapper{
