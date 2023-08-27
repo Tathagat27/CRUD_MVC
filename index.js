@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
+app.use("/api", todoRoute);
 
 // Your code
 if (process.env.NODE_ENV === "production") {
@@ -32,7 +33,6 @@ if (process.env.NODE_ENV === "production") {
 
 connectdb();
 
-app.use("/api", todoRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
