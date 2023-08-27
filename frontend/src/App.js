@@ -64,7 +64,7 @@ function App() {
           placeholder="Add a New Todo"
           autofocus="autofocus"
         />
-        <button type="submit" className="add-button" >
+        <button type="submit" className="add-button" onClick ={handleAddTodo} >
           +
         </button>
         </div>
