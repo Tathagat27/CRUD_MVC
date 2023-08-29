@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
 
-
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [todos, setTodos] = useState(null);
@@ -17,7 +17,7 @@ function App() {
 
   const getTodos = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/todos`)
+      .get(`${BASE_URL}/todos`)
       .then((res) => setTodos(res.data))
       .catch((err) => console.error(err));
   };
@@ -32,7 +32,7 @@ function App() {
     }
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/todo/new`,{
+      .post(`${BASE_URL}/todo/new`,{
         title: todo,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ function App() {
 
   const handleDeleteTodo = (id) => {
     axios
-    .delete(`${process.env.REACT_APP_API_URL}/todo/delete/${id}`)
+    .delete(`${BASE_URL}/todo/delete/${id}`)
     .then((res) =>
       setTodos(todos.filter((todo) => todo._id !== res.data._id))
     )
@@ -59,7 +59,7 @@ function App() {
 
   const handleTodoClick = (id) => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/todo/toggleStatus/${id}`)
+      .get(`${BASE_URL}/todo/toggleStatus/${id}`)
       .then((res) => getTodos())
       .catch((err) => console.error(err));
   };
