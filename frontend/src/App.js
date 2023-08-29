@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
 
-const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [todos, setTodos] = useState(null);
